@@ -1,0 +1,28 @@
+{
+  "generationParameters": {
+    "generationDate": "Thu Oct 22 2026 19:42:10 GMT+0000 (Coordinated Universal Time)",
+    "generatorPlatform": "SAP Business Application Studio",
+    "serviceType": "SAP System (ABAP On-Premise)",
+    "metadataFilename": "",
+    "serviceUrl": "http://sapdev:8000/sap/opu/odata/accao/IS_Q_SIN_OVP_CDS",
+    "appName": "accao_is_ovp",
+    "appTitle": "Overview para Acção Gestão de Sinistros",
+    "appDescription": "Overview para Acção Gestão de Sinistros",
+    "appNamespace": "br.com.accao.is",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.136.10",
+    "enableEslint": true,
+    "enableTypeScript": false,
+    "showMockDataInfo": true,
+    "generatorVersion": "1.33.0",
+    "template": "Overview Page V2",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [
+      {
+        "type": "Filter Entity Type",
+        "value": "xACCAOxIS_Q_SIN_OVP"
+      }
+    ],
+    "launchText": "To launch the generated application, run the following from the generated application root folder:\n\n```\n    npm start\n```"
+  }
+}

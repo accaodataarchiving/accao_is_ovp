@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ODM',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.ODM.v1" Alias="SAP__ODM"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="xACCAOxIS_Q_SIN_OVP_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="xACCAOxIS_Q_SIN_OVPType" sap:label="Acção IS - Sinistros (OVP)" sap:semantics="aggregate" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:filterable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="TotaledProperties" Type="Edm.String" sap:aggregation-role="totaled-properties-list" sap:is-annotation="true" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Culpa" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension" sap:label="Culpabilidade" sap:quickinfo="Moeda" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="Moeda" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:label="Motorista" sap:creatable="false" sap:updatable="false" sap:value-list="standard" sap:semantics="currency-code"/>
+                <Property Name="MotoristaNome" Type="Edm.String" MaxLength="80" sap:aggregation-role="dimension" sap:label="Data do sinistro" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DataSinistro" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:label="Incident Date" sap:quickinfo="Data do sinistro (Description)" sap:creatable="false" sap:updatable="false" sap:semantics="yearmonthday"/>
+                <Property Name="DataSinistro_T" Type="Edm.String" MaxLength="10" sap:label="Incident Date" sap:quickinfo="Situação" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="StatusGrupo" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension" sap:label="Status" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="100" sap:aggregation-role="dimension" sap:label="Status" sap:quickinfo="Seguradora" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Seguradora" Type="Edm.String" MaxLength="8" sap:aggregation-role="dimension" sap:label="Insurance Company" sap:quickinfo="Tipo de sinistro" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="TipoSinistro" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:label="Incident Type" sap:quickinfo="CULPATXT" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CulpaTxt" Type="Edm.String" MaxLength="20" sap:aggregation-role="dimension" sap:label="Sinistro" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Sinistro" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:label="Incident ID" sap:quickinfo="SEVERIDADETXT" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SeveridadeTxt" Type="Edm.String" MaxLength="15" sap:aggregation-role="dimension" sap:label="Dias em aberto" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DiasAberto" Type="Edm.Int32" sap:aggregation-role="dimension" sap:label="Incident Type Name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="TipoSinistroTxt" Type="Edm.String" MaxLength="100" sap:aggregation-role="dimension" sap:label="Incident Type Name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Centro" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:label="Centro" sap:quickinfo="Plant" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Equipamento" Type="Edm.String" MaxLength="18" sap:aggregation-role="dimension" sap:label="Veículo" sap:quickinfo="Equipment Number" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SeveridadeCrit" Type="Edm.Int16" sap:aggregation-role="dimension" sap:label="SEVERIDADECRIT" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="StatusGrupoTxt" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension" sap:label="STATUSGRUPOTXT" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="AgingCrit" Type="Edm.Int16" sap:aggregation-role="dimension" sap:label="AGINGCRIT" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SeguradoraTxt" Type="Edm.String" MaxLength="50" sap:aggregation-role="dimension" sap:label="Insurance Company Nm" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Severidade" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension" sap:label="Insurance Company Name" sap:quickinfo="Severidade do dano" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="AnoMes" Type="Edm.String" MaxLength="6" sap:aggregation-role="dimension" sap:label="Damage Servertiy" sap:creatable="false" sap:updatable="false" sap:value-list="standard" sap:semantics="yearmonth"/>
+                <Property Name="AnoMes_T" Type="Edm.String" MaxLength="7" sap:label="Mês" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="AcionadoPor" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension" sap:label="Mês (Description)" sap:quickinfo="Seguro acionado por" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="EquipamentoTxt" Type="Edm.String" MaxLength="40" sap:aggregation-role="dimension" sap:label="incident triggered by" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="AcionadoPorTxt" Type="Edm.String" MaxLength="15" sap:aggregation-role="dimension" sap:label="EQUIPAMENTOTXT" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="StatusTxt" Type="Edm.String" MaxLength="50" sap:aggregation-role="dimension" sap:label="ACIONADOPORTXT" sap:quickinfo="Status (texto)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="QtdSinistros" Type="Edm.Decimal" Precision="42" Scale="0" sap:aggregation-role="measure" sap:filterable="false" sap:text="QtdSinistros_F" sap:updatable="false" sap:label="Qtd. sinistros" sap:creatable="false"/>
+                <Property Name="QtdSinistros_F" Type="Edm.String" MaxLength="60" sap:label="Qtd. sinistros (Formatted)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="CustoTotal" Type="Edm.Decimal" Precision="42" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:text="CustoTotal_F" sap:unit="Moeda" sap:updatable="false" sap:variable-scale="true" sap:label="Custo total" sap:quickinfo="Total Cost" sap:creatable="false"/>
+                <Property Name="CustoTotal_F" Type="Edm.String" MaxLength="60" sap:label="Custo total (Formatted)" sap:quickinfo="Total Cost" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="ValorCoberto" Type="Edm.Decimal" Precision="42" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:text="ValorCoberto_F" sap:unit="Moeda" sap:updatable="false" sap:variable-scale="true" sap:label="Valor coberto" sap:quickinfo="Insurance Coverage" sap:creatable="false"/>
+                <Property Name="ValorCoberto_F" Type="Edm.String" MaxLength="60" sap:label="Valor coberto (Formatted)" sap:quickinfo="Insurance Coverage" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="CustoDescoberto" Type="Edm.Decimal" Precision="42" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:text="CustoDescoberto_F" sap:unit="Moeda" sap:updatable="false" sap:variable-scale="true" sap:label="Custo descoberto" sap:creatable="false"/>
+                <Property Name="CustoDescoberto_F" Type="Edm.String" MaxLength="60" sap:label="Custo descoberto (Formatted)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Culpa" sap:label="Culpabilidade (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Culpa_ID"/>
+                </Key>
+                <Property Name="Culpa_ID" Type="Edm.String" Nullable="false" MaxLength="1" sap:text="CulpaText" sap:label="Culpabilidade" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="CulpaText" Type="Edm.String" sap:label="Culpabilidade (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="CulpaResult" sap:label="Culpabilidade (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Culpa"/>
+                </Key>
+                <Property Name="Culpa" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Culpabilidade" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Moeda" Type="Edm.String" MaxLength="5" sap:label="Moeda" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="MotoristaNome" Type="Edm.String" MaxLength="80" sap:label="Motorista" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="DataSinistro" Type="Edm.String" MaxLength="10" sap:text="DataSinistro_T" sap:label="Data do sinistro" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="DataSinistro_T" Type="Edm.String" sap:label="Data do sinistro (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StatusGrupo" Type="Edm.String" MaxLength="1" sap:label="Situação" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="100" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Seguradora" Type="Edm.String" MaxLength="8" sap:label="Seguradora" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="TipoSinistro" Type="Edm.String" MaxLength="3" sap:label="Tipo de sinistro" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="CulpaTxt" Type="Edm.String" MaxLength="20" sap:label="CULPATXT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Sinistro" Type="Edm.String" MaxLength="10" sap:label="Sinistro" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="SeveridadeTxt" Type="Edm.String" MaxLength="15" sap:label="SEVERIDADETXT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="DiasAberto" Type="Edm.Int32" sap:label="Dias em aberto" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="TipoSinistroTxt" Type="Edm.String" MaxLength="100" sap:label="Incident Type Name" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Centro" Type="Edm.String" MaxLength="4" sap:label="Centro" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Equipamento" Type="Edm.String" MaxLength="18" sap:label="Veículo" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="SeveridadeCrit" Type="Edm.Int16" sap:label="SEVERIDADECRIT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="StatusGrupoTxt" Type="Edm.String" MaxLength="12" sap:label="STATUSGRUPOTXT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="AgingCrit" Type="Edm.Int16" sap:label="AGINGCRIT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="SeguradoraTxt" Type="Edm.String" MaxLength="50" sap:label="Insurance Company Nm" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Severidade" Type="Edm.String" MaxLength="1" sap:label="Severidade do dano" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="AnoMes" Type="Edm.String" MaxLength="6" sap:text="AnoMes_T" sap:label="Mês" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="AnoMes_T" Type="Edm.String" sap:label="Mês (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AcionadoPor" Type="Edm.String" MaxLength="1" sap:label="Seguro acionado por" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="EquipamentoTxt" Type="Edm.String" MaxLength="40" sap:label="EQUIPAMENTOTXT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="AcionadoPorTxt" Type="Edm.String" MaxLength="15" sap:label="ACIONADOPORTXT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="StatusTxt" Type="Edm.String" MaxLength="50" sap:label="Status (texto)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="Moeda" sap:label="Moeda (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Moeda_ID"/>
+                </Key>
+                <Property Name="Moeda_ID" Type="Edm.String" Nullable="false" MaxLength="5" sap:text="MoedaText" sap:label="Moeda" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="MoedaText" Type="Edm.String" sap:label="Moeda (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="MoedaResult" sap:label="Moeda (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Moeda"/>
+                </Key>
+                <Property Name="Moeda" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Moeda" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Culpa" Type="Edm.String" MaxLength="1" sap:label="Culpabilidade" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="MotoristaNome" Type="Edm.String" MaxLength="80" sap:label="Motorista" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="DataSinistro" Type="Edm.String" MaxLength="10" sap:text="DataSinistro_T" sap:label="Data do sinistro" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="DataSinistro_T" Type="Edm.String" sap:label="Data do sinistro (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StatusGrupo" Type="Edm.String" MaxLength="1" sap:label="Situação" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="100" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Seguradora" Type="Edm.String" MaxLength="8" sap:label="Seguradora" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="TipoSinistro" Type="Edm.String" MaxLength="3" sap:label="Tipo de sinistro" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="CulpaTxt" Type="Edm.String" MaxLength="20" sap:label="CULPATXT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Sinistro" Type="Edm.String" MaxLength="10" sap:label="Sinistro" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="SeveridadeTxt" Type="Edm.String" MaxLength="15" sap:label="SEVERIDADETXT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="DiasAberto" Type="Edm.Int32" sap:label="Dias em aberto" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="TipoSinistroTxt" Type="Edm.String" MaxLength="100" sap:label="Incident Type Name" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Centro" Type="Edm.String" MaxLength="4" sap:label="Centro" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Equipamento" Type="Edm.String" MaxLength="18" sap:label="Veículo" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="SeveridadeCrit" Type="Edm.Int16" sap:label="SEVERIDADECRIT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="StatusGrupoTxt" Type="Edm.String" MaxLength="12" sap:label="STATUSGRUPOTXT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="AgingCrit" Type="Edm.Int16" sap:label="AGINGCRIT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="SeguradoraTxt" Type="Edm.String" MaxLength="50" sap:label="Insurance Company Nm" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Severidade" Type="Edm.String" MaxLength="1" sap:label="Severidade do dano" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="AnoMes" Type="Edm.String" MaxLength="6" sap:text="AnoMes_T" sap:label="Mês" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="AnoMes_T" Type="Edm.String" sap:label="Mês (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AcionadoPor" Type="Edm.String" MaxLength="1" sap:label="Seguro acionado por" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="EquipamentoTxt" Type="Edm.String" MaxLength="40" sap:label="EQUIPAMENTOTXT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="AcionadoPorTxt" Type="Edm.String" MaxLength="15" sap:label="ACIONADOPORTXT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="StatusTxt" Type="Edm.String" MaxLength="50" sap:label="Status (texto)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="Severidade" sap:label="Severidade do dano (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Severidade_ID"/>
+                </Key>
+                <Property Name="Severidade_ID" Type="Edm.String" Nullable="false" MaxLength="1" sap:text="SeveridadeText" sap:label="Severidade do dano" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="SeveridadeText" Type="Edm.String" sap:label="Severidade do dano (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="SeveridadeResult" sap:label="Severidade do dano (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Severidade"/>
+                </Key>
+                <Property Name="Severidade" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Severidade do dano" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Culpa" Type="Edm.String" MaxLength="1" sap:label="Culpabilidade" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Moeda" Type="Edm.String" MaxLength="5" sap:label="Moeda" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="MotoristaNome" Type="Edm.String" MaxLength="80" sap:label="Motorista" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="DataSinistro" Type="Edm.String" MaxLength="10" sap:text="DataSinistro_T" sap:label="Data do sinistro" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="DataSinistro_T" Type="Edm.String" sap:label="Data do sinistro (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StatusGrupo" Type="Edm.String" MaxLength="1" sap:label="Situação" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="100" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Seguradora" Type="Edm.String" MaxLength="8" sap:label="Seguradora" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="TipoSinistro" Type="Edm.String" MaxLength="3" sap:label="Tipo de sinistro" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="CulpaTxt" Type="Edm.String" MaxLength="20" sap:label="CULPATXT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Sinistro" Type="Edm.String" MaxLength="10" sap:label="Sinistro" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="SeveridadeTxt" Type="Edm.String" MaxLength="15" sap:label="SEVERIDADETXT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="DiasAberto" Type="Edm.Int32" sap:label="Dias em aberto" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="TipoSinistroTxt" Type="Edm.String" MaxLength="100" sap:label="Incident Type Name" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Centro" Type="Edm.String" MaxLength="4" sap:label="Centro" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Equipamento" Type="Edm.String" MaxLength="18" sap:label="Veículo" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="SeveridadeCrit" Type="Edm.Int16" sap:label="SEVERIDADECRIT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="StatusGrupoTxt" Type="Edm.String" MaxLength="12" sap:label="STATUSGRUPOTXT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="AgingCrit" Type="Edm.Int16" sap:label="AGINGCRIT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="SeguradoraTxt" Type="Edm.String" MaxLength="50" sap:label="Insurance Company Nm" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="AnoMes" Type="Edm.String" MaxLength="6" sap:text="AnoMes_T" sap:label="Mês" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="AnoMes_T" Type="Edm.String" sap:label="Mês (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AcionadoPor" Type="Edm.String" MaxLength="1" sap:label="Seguro acionado por" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="EquipamentoTxt" Type="Edm.String" MaxLength="40" sap:label="EQUIPAMENTOTXT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="AcionadoPorTxt" Type="Edm.String" MaxLength="15" sap:label="ACIONADOPORTXT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="StatusTxt" Type="Edm.String" MaxLength="50" sap:label="Status (texto)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="AnoMes" sap:label="Mês (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="AnoMes_ID"/>
+                </Key>
+                <Property Name="AnoMes_ID" Type="Edm.String" Nullable="false" MaxLength="6" sap:text="AnoMesText" sap:label="Mês" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="AnoMesText" Type="Edm.String" sap:label="Mês (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="AnoMesResult" sap:label="Mês (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="AnoMes"/>
+                </Key>
+                <Property Name="AnoMes" Type="Edm.String" Nullable="false" MaxLength="6" sap:text="AnoMesText" sap:label="Mês" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="AnoMesText" Type="Edm.String" sap:label="Mês (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Culpa" Type="Edm.String" MaxLength="1" sap:label="Culpabilidade" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Moeda" Type="Edm.String" MaxLength="5" sap:label="Moeda" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="MotoristaNome" Type="Edm.String" MaxLength="80" sap:label="Motorista" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="DataSinistro" Type="Edm.String" MaxLength="10" sap:text="DataSinistro_T" sap:label="Data do sinistro" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="DataSinistro_T" Type="Edm.String" sap:label="Data do sinistro (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StatusGrupo" Type="Edm.String" MaxLength="1" sap:label="Situação" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="100" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Seguradora" Type="Edm.String" MaxLength="8" sap:label="Seguradora" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="TipoSinistro" Type="Edm.String" MaxLength="3" sap:label="Tipo de sinistro" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="CulpaTxt" Type="Edm.String" MaxLength="20" sap:label="CULPATXT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Sinistro" Type="Edm.String" MaxLength="10" sap:label="Sinistro" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="SeveridadeTxt" Type="Edm.String" MaxLength="15" sap:label="SEVERIDADETXT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="DiasAberto" Type="Edm.Int32" sap:label="Dias em aberto" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="TipoSinistroTxt" Type="Edm.String" MaxLength="100" sap:label="Incident Type Name" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Centro" Type="Edm.String" MaxLength="4" sap:label="Centro" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Equipamento" Type="Edm.String" MaxLength="18" sap:label="Veículo" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="SeveridadeCrit" Type="Edm.Int16" sap:label="SEVERIDADECRIT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="StatusGrupoTxt" Type="Edm.String" MaxLength="12" sap:label="STATUSGRUPOTXT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="AgingCrit" Type="Edm.Int16" sap:label="AGINGCRIT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="SeguradoraTxt" Type="Edm.String" MaxLength="50" sap:label="Insurance Company Nm" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Severidade" Type="Edm.String" MaxLength="1" sap:label="Severidade do dano" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="AcionadoPor" Type="Edm.String" MaxLength="1" sap:label="Seguro acionado por" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="EquipamentoTxt" Type="Edm.String" MaxLength="40" sap:label="EQUIPAMENTOTXT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="AcionadoPorTxt" Type="Edm.String" MaxLength="15" sap:label="ACIONADOPORTXT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="StatusTxt" Type="Edm.String" MaxLength="50" sap:label="Status (texto)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="AcionadoPor" sap:label="Seguro acionado por (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="AcionadoPor_ID"/>
+                </Key>
+                <Property Name="AcionadoPor_ID" Type="Edm.String" Nullable="false" MaxLength="1" sap:text="AcionadoPorText" sap:label="Seguro acionado por" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="AcionadoPorText" Type="Edm.String" sap:label="Seguro acionado por (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="AcionadoPorResult" sap:label="Seguro acionado por (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="AcionadoPor"/>
+                </Key>
+                <Property Name="AcionadoPor" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Seguro acionado por" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Culpa" Type="Edm.String" MaxLength="1" sap:label="Culpabilidade" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Moeda" Type="Edm.String" MaxLength="5" sap:label="Moeda" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="MotoristaNome" Type="Edm.String" MaxLength="80" sap:label="Motorista" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="DataSinistro" Type="Edm.String" MaxLength="10" sap:text="DataSinistro_T" sap:label="Data do sinistro" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="DataSinistro_T" Type="Edm.String" sap:label="Data do sinistro (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StatusGrupo" Type="Edm.String" MaxLength="1" sap:label="Situação" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="100" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Seguradora" Type="Edm.String" MaxLength="8" sap:label="Seguradora" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="TipoSinistro" Type="Edm.String" MaxLength="3" sap:label="Tipo de sinistro" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="CulpaTxt" Type="Edm.String" MaxLength="20" sap:label="CULPATXT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Sinistro" Type="Edm.String" MaxLength="10" sap:label="Sinistro" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="SeveridadeTxt" Type="Edm.String" MaxLength="15" sap:label="SEVERIDADETXT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="DiasAberto" Type="Edm.Int32" sap:label="Dias em aberto" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="TipoSinistroTxt" Type="Edm.String" MaxLength="100" sap:label="Incident Type Name" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Centro" Type="Edm.String" MaxLength="4" sap:label="Centro" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Equipamento" Type="Edm.String" MaxLength="18" sap:label="Veículo" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="SeveridadeCrit" Type="Edm.Int16" sap:label="SEVERIDADECRIT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="StatusGrupoTxt" Type="Edm.String" MaxLength="12" sap:label="STATUSGRUPOTXT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="AgingCrit" Type="Edm.Int16" sap:label="AGINGCRIT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="SeguradoraTxt" Type="Edm.String" MaxLength="50" sap:label="Insurance Company Nm" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Severidade" Type="Edm.String" MaxLength="1" sap:label="Severidade do dano" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="AnoMes" Type="Edm.String" MaxLength="6" sap:text="AnoMes_T" sap:label="Mês" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="AnoMes_T" Type="Edm.String" sap:label="Mês (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EquipamentoTxt" Type="Edm.String" MaxLength="40" sap:label="EQUIPAMENTOTXT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="AcionadoPorTxt" Type="Edm.String" MaxLength="15" sap:label="ACIONADOPORTXT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="StatusTxt" Type="Edm.String" MaxLength="50" sap:label="Status (texto)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="ODataQueryAdditionalMetadata" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ODataQueryMetadata"/>
+                </Key>
+                <Property Name="ODataQueryMetadata" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ODataQueryMetadataValue_Current" Type="Edm.String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ODataQueryMetadataValueAtDefine" Type="Edm.String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityContainer Name="xACCAOxIS_Q_SIN_OVP_CDS_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="xACCAOxIS_Q_SIN_OVP" EntityType="xACCAOxIS_Q_SIN_OVP_CDS.xACCAOxIS_Q_SIN_OVPType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Culpa" EntityType="xACCAOxIS_Q_SIN_OVP_CDS.Culpa" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="CulpaResults" EntityType="xACCAOxIS_Q_SIN_OVP_CDS.CulpaResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Moeda" EntityType="xACCAOxIS_Q_SIN_OVP_CDS.Moeda" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="MoedaResults" EntityType="xACCAOxIS_Q_SIN_OVP_CDS.MoedaResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Severidade" EntityType="xACCAOxIS_Q_SIN_OVP_CDS.Severidade" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="SeveridadeResults" EntityType="xACCAOxIS_Q_SIN_OVP_CDS.SeveridadeResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="AnoMes" EntityType="xACCAOxIS_Q_SIN_OVP_CDS.AnoMes" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="AnoMesResults" EntityType="xACCAOxIS_Q_SIN_OVP_CDS.AnoMesResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="AcionadoPor" EntityType="xACCAOxIS_Q_SIN_OVP_CDS.AcionadoPor" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="AcionadoPorResults" EntityType="xACCAOxIS_Q_SIN_OVP_CDS.AcionadoPorResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="AdditionalMetadata" EntityType="xACCAOxIS_Q_SIN_OVP_CDS.ODataQueryAdditionalMetadata" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="xACCAOxIS_Q_SIN_OVP_CDS.xACCAOxIS_Q_SIN_OVPType/Culpa" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Culpabilidade ( Dados mestre )"/>
+                        <PropertyValue Property="CollectionPath" String="Culpa"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Culpa"/>
+                                    <PropertyValue Property="ValueListProperty" String="Culpa_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CulpaText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="xACCAOxIS_Q_SIN_OVP_CDS.xACCAOxIS_Q_SIN_OVPType/Moeda" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Moeda ( Dados mestre )"/>
+                        <PropertyValue Property="CollectionPath" String="Moeda"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Moeda"/>
+                                    <PropertyValue Property="ValueListProperty" String="Moeda_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="MoedaText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="xACCAOxIS_Q_SIN_OVP_CDS.xACCAOxIS_Q_SIN_OVPType/Severidade" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Severidade do dano ( Dados mestre )"/>
+                        <PropertyValue Property="CollectionPath" String="Severidade"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Severidade"/>
+                                    <PropertyValue Property="ValueListProperty" String="Severidade_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SeveridadeText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="xACCAOxIS_Q_SIN_OVP_CDS.xACCAOxIS_Q_SIN_OVPType/AnoMes" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Mês ( Dados mestre )"/>
+                        <PropertyValue Property="CollectionPath" String="AnoMes"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="AnoMes"/>
+                                    <PropertyValue Property="ValueListProperty" String="AnoMes_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AnoMesText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="xACCAOxIS_Q_SIN_OVP_CDS.xACCAOxIS_Q_SIN_OVPType/AcionadoPor" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Seguro acionado por ( Dados mestre )"/>
+                        <PropertyValue Property="CollectionPath" String="AcionadoPor"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="AcionadoPor"/>
+                                    <PropertyValue Property="ValueListProperty" String="AcionadoPor_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AcionadoPorText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="xACCAOxIS_Q_SIN_OVP_CDS.xACCAOxIS_Q_SIN_OVP_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <atom:link rel="self" href="/sap/opu/odata/accao/IS_Q_SIN_OVP_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="/sap/opu/odata/accao/IS_Q_SIN_OVP_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

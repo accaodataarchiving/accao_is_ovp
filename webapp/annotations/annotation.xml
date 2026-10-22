@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+  <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml"><edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/></edmx:Reference>
+  <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml"><edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/></edmx:Reference>
+  <edmx:DataServices>
+    <Schema Namespace="local" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <Annotations Target="xACCAOxIS_Q_SIN_OVP_CDS.xACCAOxIS_Q_SIN_OVPType/Status">
+        <Annotation Term="Common.Text" Path="StatusTxt">
+          <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="xACCAOxIS_Q_SIN_OVP_CDS.xACCAOxIS_Q_SIN_OVPType/StatusGrupo">
+        <Annotation Term="Common.Text" Path="StatusGrupoTxt">
+          <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="xACCAOxIS_Q_SIN_OVP_CDS.xACCAOxIS_Q_SIN_OVPType/TipoSinistro">
+        <Annotation Term="Common.Text" Path="TipoSinistroTxt">
+          <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="xACCAOxIS_Q_SIN_OVP_CDS.xACCAOxIS_Q_SIN_OVPType/Seguradora">
+        <Annotation Term="Common.Text" Path="SeguradoraTxt">
+          <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="xACCAOxIS_Q_SIN_OVP_CDS.xACCAOxIS_Q_SIN_OVPType/Equipamento">
+        <Annotation Term="Common.Text" Path="EquipamentoTxt">
+          <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="xACCAOxIS_Q_SIN_OVP_CDS.xACCAOxIS_Q_SIN_OVPType/Culpa">
+        <Annotation Term="Common.Text" Path="CulpaTxt">
+          <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="xACCAOxIS_Q_SIN_OVP_CDS.xACCAOxIS_Q_SIN_OVPType/AcionadoPor">
+        <Annotation Term="Common.Text" Path="AcionadoPorTxt">
+          <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="xACCAOxIS_Q_SIN_OVP_CDS.xACCAOxIS_Q_SIN_OVPType/Severidade">
+        <Annotation Term="Common.Text" Path="SeveridadeTxt">
+          <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="xACCAOxIS_Q_SIN_OVP_CDS.xACCAOxIS_Q_SIN_OVPType/AnoMes">
+        <Annotation Term="Common.Text" Path="AnoMes_T">
+          <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="xACCAOxIS_Q_SIN_OVP_CDS.xACCAOxIS_Q_SIN_OVPType">
+        <Annotation Term="UI.SelectionFields"><Collection><PropertyPath>AnoMes</PropertyPath><PropertyPath>StatusGrupo</PropertyPath><PropertyPath>TipoSinistro</PropertyPath><PropertyPath>Seguradora</PropertyPath><PropertyPath>Culpa</PropertyPath><PropertyPath>Severidade</PropertyPath><PropertyPath>AcionadoPor</PropertyPath><PropertyPath>Centro</PropertyPath></Collection></Annotation>
+        <Annotation Term="UI.DataPoint" Qualifier="Qtd"><Record Type="UI.DataPointType"><PropertyValue Property="Title" String="Sinistros"/><PropertyValue Property="Value" Path="QtdSinistros"/></Record></Annotation>
+        <Annotation Term="UI.DataPoint" Qualifier="CustoTotal"><Record Type="UI.DataPointType"><PropertyValue Property="Title" String="Custo total"/><PropertyValue Property="Value" Path="CustoTotal"/></Record></Annotation>
+        <Annotation Term="UI.DataPoint" Qualifier="CustoDescoberto"><Record Type="UI.DataPointType"><PropertyValue Property="Title" String="Custo descoberto"/><PropertyValue Property="Value" Path="CustoDescoberto"/></Record></Annotation>
+        <Annotation Term="UI.SelectionVariant" Qualifier="Abertos"><Record Type="UI.SelectionVariantType">
+          <PropertyValue Property="Text" String="Em aberto"/>
+          <PropertyValue Property="SelectOptions"><Collection><Record Type="UI.SelectOptionType"><PropertyValue Property="PropertyName" PropertyPath="StatusGrupo"/><PropertyValue Property="Ranges"><Collection><Record Type="UI.SelectionRangeType"><PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/><PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ"/><PropertyValue Property="Low" String="A"/></Record></Collection></PropertyValue></Record></Collection></PropertyValue>
+        </Record></Annotation>
+        <Annotation Term="UI.Chart" Qualifier="StatusAbertos"><Record Type="UI.ChartDefinitionType">
+          <PropertyValue Property="Title" String="Sinistros em aberto por status"/>
+          <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Bar"/>
+          <PropertyValue Property="Measures"><Collection><PropertyPath>QtdSinistros</PropertyPath></Collection></PropertyValue>
+          <PropertyValue Property="MeasureAttributes"><Collection>
+            <Record Type="UI.ChartMeasureAttributeType"><PropertyValue Property="Measure" PropertyPath="QtdSinistros"/><PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/><PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#Qtd"/></Record>
+          </Collection></PropertyValue>
+          <PropertyValue Property="Dimensions"><Collection><PropertyPath>Status</PropertyPath></Collection></PropertyValue>
+          <PropertyValue Property="DimensionAttributes"><Collection><Record Type="UI.ChartDimensionAttributeType"><PropertyValue Property="Dimension" PropertyPath="Status"/><PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/></Record></Collection></PropertyValue>
+        </Record></Annotation>
+        <Annotation Term="UI.PresentationVariant" Qualifier="StatusAbertos"><Record Type="UI.PresentationVariantType">
+          <PropertyValue Property="SortOrder"><Collection><Record Type="Common.SortOrderType"><PropertyValue Property="Property" PropertyPath="QtdSinistros"/><PropertyValue Property="Descending" Bool="true"/></Record></Collection></PropertyValue>
+          <PropertyValue Property="Visualizations"><Collection><AnnotationPath>@UI.Chart#StatusAbertos</AnnotationPath></Collection></PropertyValue>
+        </Record></Annotation>
+        <Annotation Term="UI.Chart" Qualifier="CustoMensal"><Record Type="UI.ChartDefinitionType">
+          <PropertyValue Property="Title" String="Custo total x custo descoberto por mês"/>
+          <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Column"/>
+          <PropertyValue Property="Measures"><Collection><PropertyPath>CustoTotal</PropertyPath><PropertyPath>CustoDescoberto</PropertyPath></Collection></PropertyValue>
+          <PropertyValue Property="MeasureAttributes"><Collection>
+            <Record Type="UI.ChartMeasureAttributeType"><PropertyValue Property="Measure" PropertyPath="CustoTotal"/><PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/><PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#CustoTotal"/></Record>
+            <Record Type="UI.ChartMeasureAttributeType"><PropertyValue Property="Measure" PropertyPath="CustoDescoberto"/><PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/><PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#CustoDescoberto"/></Record>
+          </Collection></PropertyValue>
+          <PropertyValue Property="Dimensions"><Collection><PropertyPath>AnoMes</PropertyPath></Collection></PropertyValue>
+          <PropertyValue Property="DimensionAttributes"><Collection><Record Type="UI.ChartDimensionAttributeType"><PropertyValue Property="Dimension" PropertyPath="AnoMes"/><PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/></Record></Collection></PropertyValue>
+        </Record></Annotation>
+        <Annotation Term="UI.PresentationVariant" Qualifier="CustoMensal"><Record Type="UI.PresentationVariantType">
+          <PropertyValue Property="SortOrder"><Collection><Record Type="Common.SortOrderType"><PropertyValue Property="Property" PropertyPath="AnoMes"/><PropertyValue Property="Descending" Bool="false"/></Record></Collection></PropertyValue>
+          <PropertyValue Property="Visualizations"><Collection><AnnotationPath>@UI.Chart#CustoMensal</AnnotationPath></Collection></PropertyValue>
+        </Record></Annotation>
+        <Annotation Term="UI.Chart" Qualifier="QtdMensal"><Record Type="UI.ChartDefinitionType">
+          <PropertyValue Property="Title" String="Sinistros por mês"/>
+          <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Line"/>
+          <PropertyValue Property="Measures"><Collection><PropertyPath>QtdSinistros</PropertyPath></Collection></PropertyValue>
+          <PropertyValue Property="MeasureAttributes"><Collection>
+            <Record Type="UI.ChartMeasureAttributeType"><PropertyValue Property="Measure" PropertyPath="QtdSinistros"/><PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/><PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#Qtd"/></Record>
+          </Collection></PropertyValue>
+          <PropertyValue Property="Dimensions"><Collection><PropertyPath>AnoMes</PropertyPath></Collection></PropertyValue>
+          <PropertyValue Property="DimensionAttributes"><Collection><Record Type="UI.ChartDimensionAttributeType"><PropertyValue Property="Dimension" PropertyPath="AnoMes"/><PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/></Record></Collection></PropertyValue>
+        </Record></Annotation>
+        <Annotation Term="UI.PresentationVariant" Qualifier="QtdMensal"><Record Type="UI.PresentationVariantType">
+          <PropertyValue Property="SortOrder"><Collection><Record Type="Common.SortOrderType"><PropertyValue Property="Property" PropertyPath="AnoMes"/><PropertyValue Property="Descending" Bool="false"/></Record></Collection></PropertyValue>
+          <PropertyValue Property="Visualizations"><Collection><AnnotationPath>@UI.Chart#QtdMensal</AnnotationPath></Collection></PropertyValue>
+        </Record></Annotation>
+        <Annotation Term="UI.Chart" Qualifier="PorCulpa"><Record Type="UI.ChartDefinitionType">
+          <PropertyValue Property="Title" String="Sinistros por culpabilidade"/>
+          <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Donut"/>
+          <PropertyValue Property="Measures"><Collection><PropertyPath>QtdSinistros</PropertyPath></Collection></PropertyValue>
+          <PropertyValue Property="MeasureAttributes"><Collection>
+            <Record Type="UI.ChartMeasureAttributeType"><PropertyValue Property="Measure" PropertyPath="QtdSinistros"/><PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/><PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#Qtd"/></Record>
+          </Collection></PropertyValue>
+          <PropertyValue Property="Dimensions"><Collection><PropertyPath>Culpa</PropertyPath></Collection></PropertyValue>
+          <PropertyValue Property="DimensionAttributes"><Collection><Record Type="UI.ChartDimensionAttributeType"><PropertyValue Property="Dimension" PropertyPath="Culpa"/><PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/></Record></Collection></PropertyValue>
+        </Record></Annotation>
+        <Annotation Term="UI.PresentationVariant" Qualifier="PorCulpa"><Record Type="UI.PresentationVariantType">
+          <PropertyValue Property="SortOrder"><Collection><Record Type="Common.SortOrderType"><PropertyValue Property="Property" PropertyPath="QtdSinistros"/><PropertyValue Property="Descending" Bool="true"/></Record></Collection></PropertyValue>
+          <PropertyValue Property="Visualizations"><Collection><AnnotationPath>@UI.Chart#PorCulpa</AnnotationPath></Collection></PropertyValue>
+        </Record></Annotation>
+        <Annotation Term="UI.Chart" Qualifier="PorSeveridade"><Record Type="UI.ChartDefinitionType">
+          <PropertyValue Property="Title" String="Sinistros por severidade do dano"/>
+          <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Column"/>
+          <PropertyValue Property="Measures"><Collection><PropertyPath>QtdSinistros</PropertyPath></Collection></PropertyValue>
+          <PropertyValue Property="MeasureAttributes"><Collection>
+            <Record Type="UI.ChartMeasureAttributeType"><PropertyValue Property="Measure" PropertyPath="QtdSinistros"/><PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/><PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#Qtd"/></Record>
+          </Collection></PropertyValue>
+          <PropertyValue Property="Dimensions"><Collection><PropertyPath>Severidade</PropertyPath></Collection></PropertyValue>
+          <PropertyValue Property="DimensionAttributes"><Collection><Record Type="UI.ChartDimensionAttributeType"><PropertyValue Property="Dimension" PropertyPath="Severidade"/><PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/></Record></Collection></PropertyValue>
+        </Record></Annotation>
+        <Annotation Term="UI.PresentationVariant" Qualifier="PorSeveridade"><Record Type="UI.PresentationVariantType">
+          <PropertyValue Property="SortOrder"><Collection><Record Type="Common.SortOrderType"><PropertyValue Property="Property" PropertyPath="Severidade"/><PropertyValue Property="Descending" Bool="false"/></Record></Collection></PropertyValue>
+          <PropertyValue Property="Visualizations"><Collection><AnnotationPath>@UI.Chart#PorSeveridade</AnnotationPath></Collection></PropertyValue>
+        </Record></Annotation>
+        <Annotation Term="UI.Chart" Qualifier="TopTipos"><Record Type="UI.ChartDefinitionType">
+          <PropertyValue Property="Title" String="Top 5 tipos de sinistro"/>
+          <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Bar"/>
+          <PropertyValue Property="Measures"><Collection><PropertyPath>QtdSinistros</PropertyPath></Collection></PropertyValue>
+          <PropertyValue Property="MeasureAttributes"><Collection>
+            <Record Type="UI.ChartMeasureAttributeType"><PropertyValue Property="Measure" PropertyPath="QtdSinistros"/><PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/><PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#Qtd"/></Record>
+          </Collection></PropertyValue>
+          <PropertyValue Property="Dimensions"><Collection><PropertyPath>TipoSinistro</PropertyPath></Collection></PropertyValue>
+          <PropertyValue Property="DimensionAttributes"><Collection><Record Type="UI.ChartDimensionAttributeType"><PropertyValue Property="Dimension" PropertyPath="TipoSinistro"/><PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/></Record></Collection></PropertyValue>
+        </Record></Annotation>
+        <Annotation Term="UI.PresentationVariant" Qualifier="TopTipos"><Record Type="UI.PresentationVariantType">
+          <PropertyValue Property="MaxItems" Int="5"/>
+          <PropertyValue Property="SortOrder"><Collection><Record Type="Common.SortOrderType"><PropertyValue Property="Property" PropertyPath="QtdSinistros"/><PropertyValue Property="Descending" Bool="true"/></Record></Collection></PropertyValue>
+          <PropertyValue Property="Visualizations"><Collection><AnnotationPath>@UI.Chart#TopTipos</AnnotationPath></Collection></PropertyValue>
+        </Record></Annotation>
+        <Annotation Term="UI.Chart" Qualifier="TopVeiculos"><Record Type="UI.ChartDefinitionType">
+          <PropertyValue Property="Title" String="Top 5 veículos"/>
+          <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Bar"/>
+          <PropertyValue Property="Measures"><Collection><PropertyPath>CustoTotal</PropertyPath></Collection></PropertyValue>
+          <PropertyValue Property="MeasureAttributes"><Collection>
+            <Record Type="UI.ChartMeasureAttributeType"><PropertyValue Property="Measure" PropertyPath="CustoTotal"/><PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/><PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#CustoTotal"/></Record>
+          </Collection></PropertyValue>
+          <PropertyValue Property="Dimensions"><Collection><PropertyPath>Equipamento</PropertyPath></Collection></PropertyValue>
+          <PropertyValue Property="DimensionAttributes"><Collection><Record Type="UI.ChartDimensionAttributeType"><PropertyValue Property="Dimension" PropertyPath="Equipamento"/><PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/></Record></Collection></PropertyValue>
+        </Record></Annotation>
+        <Annotation Term="UI.PresentationVariant" Qualifier="TopVeiculos"><Record Type="UI.PresentationVariantType">
+          <PropertyValue Property="MaxItems" Int="5"/>
+          <PropertyValue Property="SortOrder"><Collection><Record Type="Common.SortOrderType"><PropertyValue Property="Property" PropertyPath="CustoTotal"/><PropertyValue Property="Descending" Bool="true"/></Record></Collection></PropertyValue>
+          <PropertyValue Property="Visualizations"><Collection><AnnotationPath>@UI.Chart#TopVeiculos</AnnotationPath></Collection></PropertyValue>
+        </Record></Annotation>
+        <Annotation Term="UI.Chart" Qualifier="TopMotoristas"><Record Type="UI.ChartDefinitionType">
+          <PropertyValue Property="Title" String="Top 5 motoristas"/>
+          <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Bar"/>
+          <PropertyValue Property="Measures"><Collection><PropertyPath>QtdSinistros</PropertyPath></Collection></PropertyValue>
+          <PropertyValue Property="MeasureAttributes"><Collection>
+            <Record Type="UI.ChartMeasureAttributeType"><PropertyValue Property="Measure" PropertyPath="QtdSinistros"/><PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/><PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#Qtd"/></Record>
+          </Collection></PropertyValue>
+          <PropertyValue Property="Dimensions"><Collection><PropertyPath>MotoristaNome</PropertyPath></Collection></PropertyValue>
+          <PropertyValue Property="DimensionAttributes"><Collection><Record Type="UI.ChartDimensionAttributeType"><PropertyValue Property="Dimension" PropertyPath="MotoristaNome"/><PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/></Record></Collection></PropertyValue>
+        </Record></Annotation>
+        <Annotation Term="UI.PresentationVariant" Qualifier="TopMotoristas"><Record Type="UI.PresentationVariantType">
+          <PropertyValue Property="MaxItems" Int="5"/>
+          <PropertyValue Property="SortOrder"><Collection><Record Type="Common.SortOrderType"><PropertyValue Property="Property" PropertyPath="QtdSinistros"/><PropertyValue Property="Descending" Bool="true"/></Record></Collection></PropertyValue>
+          <PropertyValue Property="Visualizations"><Collection><AnnotationPath>@UI.Chart#TopMotoristas</AnnotationPath></Collection></PropertyValue>
+        </Record></Annotation>
+        <Annotation Term="UI.LineItem" Qualifier="Abertos"><Collection>
+          <Record Type="UI.DataField"><PropertyValue Property="Value" Path="Sinistro"/><PropertyValue Property="Label" String="Sinistro"/></Record>
+          <Record Type="UI.DataField"><PropertyValue Property="Value" Path="EquipamentoTxt"/><PropertyValue Property="Label" String="Veículo"/></Record>
+          <Record Type="UI.DataField"><PropertyValue Property="Value" Path="StatusTxt"/><PropertyValue Property="Label" String="Status"/></Record>
+          <Record Type="UI.DataField"><PropertyValue Property="Value" Path="DiasAberto"/><PropertyValue Property="Label" String="Dias em aberto"/><PropertyValue Property="Criticality" Path="AgingCrit"/></Record>
+          <Record Type="UI.DataField"><PropertyValue Property="Value" Path="CustoDescoberto"/><PropertyValue Property="Label" String="Custo descoberto"/></Record>
+        </Collection></Annotation>
+        <Annotation Term="UI.PresentationVariant" Qualifier="Abertos"><Record Type="UI.PresentationVariantType">
+          <PropertyValue Property="MaxItems" Int="5"/>
+          <PropertyValue Property="SortOrder"><Collection><Record Type="Common.SortOrderType"><PropertyValue Property="Property" PropertyPath="DiasAberto"/><PropertyValue Property="Descending" Bool="true"/></Record></Collection></PropertyValue>
+          <PropertyValue Property="Visualizations"><Collection><AnnotationPath>@UI.LineItem#Abertos</AnnotationPath></Collection></PropertyValue>
+        </Record></Annotation>
+      </Annotations>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

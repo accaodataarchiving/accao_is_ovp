@@ -1,0 +1,266 @@
+{
+  "_version": "1.73.1",
+  "sap.app": {
+    "id": "br.com.accao.is.accaoisovp",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:ovp",
+      "version": "1.33.0",
+      "toolsId": "0adce45d-0392-4ecf-b17d-59d4e0a2858f"
+    },
+    "dataSources": {
+      "ACCAO_IS_Q_SIN_OVP_CDS_VAN": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='%2FACCAO%2FIS_Q_SIN_OVP_CDS_VAN',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/mainService/ACCAO_IS_Q_SIN_OVP_CDS_VAN.xml"
+        }
+      },
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
+        }
+      },
+      "mainService": {
+        "uri": "/sap/opu/odata/accao/IS_Q_SIN_OVP_CDS/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "ACCAO_IS_Q_SIN_OVP_CDS_VAN",
+            "annotation"
+          ],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "accaois-overview": {
+          "semanticObject": "accaois",
+          "action": "overview",
+          "title": "{{accaois-overview.flpTitle}}",
+          "subTitle": "{{accaois-overview.flpSubtitle}}",
+          "icon": "sap-icon://business-objects-experience",
+          "info": "Acção IS",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.136.10",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ushell": {},
+        "sap.f": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ovp": {},
+        "sap.ui.rta": {},
+        "sap.ui.layout": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "br.com.accao.is.accaoisovp.i18n.i18n"
+        }
+      },
+      "mainModel": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "defaultCountMode": "Inline",
+          "refreshAfterChange": false,
+          "metadataUrlParams": {
+            "sap-value-list": "none"
+          }
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [],
+      "targets": {}
+    }
+  },
+  "sap.ovp": {
+    "globalFilterModel": "mainModel",
+    "globalFilterEntityType": "xACCAOxIS_Q_SIN_OVPType",
+    "globalFilterEntitySet": "xACCAOxIS_Q_SIN_OVP",
+    "containerLayout": "resizable",
+    "enableLiveFilter": true,
+    "considerAnalyticalParameters": false,
+    "cards": {
+      "card01_status_abertos": {
+        "model": "mainModel",
+        "template": "sap.ovp.cards.charts.analytical",
+        "settings": {
+          "title": "Sinistros em aberto por status",
+          "subTitle": "Quantidade, por etapa do processo",
+          "entitySet": "xACCAOxIS_Q_SIN_OVP",
+          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#StatusAbertos",
+          "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#StatusAbertos",
+          "selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Abertos",
+          "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#Qtd",
+          "defaultSpan": {
+            "rows": 14,
+            "cols": 2
+          }
+        }
+      },
+      "card02_custo_mensal": {
+        "model": "mainModel",
+        "template": "sap.ovp.cards.charts.analytical",
+        "settings": {
+          "title": "Custo total x custo descoberto por mês",
+          "subTitle": "BRL, todos os períodos",
+          "entitySet": "xACCAOxIS_Q_SIN_OVP",
+          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#CustoMensal",
+          "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#CustoMensal",
+          "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#CustoDescoberto",
+          "defaultSpan": {
+            "rows": 14,
+            "cols": 2
+          }
+        }
+      },
+      "card03_qtd_mensal": {
+        "model": "mainModel",
+        "template": "sap.ovp.cards.charts.analytical",
+        "settings": {
+          "title": "Sinistros por mês",
+          "subTitle": "Quantidade, todos os períodos",
+          "entitySet": "xACCAOxIS_Q_SIN_OVP",
+          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#QtdMensal",
+          "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#QtdMensal",
+          "defaultSpan": {
+            "rows": 14,
+            "cols": 2
+          }
+        }
+      },
+      "card04_culpabilidade": {
+        "model": "mainModel",
+        "template": "sap.ovp.cards.charts.analytical",
+        "settings": {
+          "title": "Sinistros por culpabilidade",
+          "subTitle": "Quantidade",
+          "entitySet": "xACCAOxIS_Q_SIN_OVP",
+          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#PorCulpa",
+          "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PorCulpa"
+        }
+      },
+      "card05_severidade": {
+        "model": "mainModel",
+        "template": "sap.ovp.cards.charts.analytical",
+        "settings": {
+          "title": "Sinistros por severidade do dano",
+          "subTitle": "Quantidade",
+          "entitySet": "xACCAOxIS_Q_SIN_OVP",
+          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#PorSeveridade",
+          "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PorSeveridade"
+        }
+      },
+      "card06_top_tipos": {
+        "model": "mainModel",
+        "template": "sap.ovp.cards.charts.analytical",
+        "settings": {
+          "title": "Top 5 tipos de sinistro",
+          "subTitle": "Quantidade",
+          "entitySet": "xACCAOxIS_Q_SIN_OVP",
+          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#TopTipos",
+          "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#TopTipos"
+        }
+      },
+      "card07_top_veiculos": {
+        "model": "mainModel",
+        "template": "sap.ovp.cards.charts.analytical",
+        "settings": {
+          "title": "Top 5 veículos",
+          "subTitle": "Por custo total",
+          "entitySet": "xACCAOxIS_Q_SIN_OVP",
+          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#TopVeiculos",
+          "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#TopVeiculos"
+        }
+      },
+      "card08_top_motoristas": {
+        "model": "mainModel",
+        "template": "sap.ovp.cards.charts.analytical",
+        "settings": {
+          "title": "Top 5 motoristas",
+          "subTitle": "Quantidade de sinistros",
+          "entitySet": "xACCAOxIS_Q_SIN_OVP",
+          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#TopMotoristas",
+          "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#TopMotoristas"
+        }
+      },
+      "card09_abertos_criticos": {
+        "model": "mainModel",
+        "template": "sap.ovp.cards.table",
+        "settings": {
+          "title": "Sinistros em aberto mais antigos",
+          "subTitle": "Ordenado por dias em aberto",
+          "entitySet": "xACCAOxIS_Q_SIN_OVP",
+          "annotationPath": "com.sap.vocabularies.UI.v1.LineItem#Abertos",
+          "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#Abertos",
+          "selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Abertos"
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "analytical"
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "brcomaccaoisaccaoisovp"
+  }
+}
